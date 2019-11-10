@@ -71,13 +71,13 @@ class P1B1(QWidget):  # Окно с переводчиком С.С.
             b1 = t0.index(c1)
             b2 = int(t0.index(c2))
             a1 = str(a1)
-            a2 = a1[::-1]
+            a2 = str(a1[::-1])
             ux1 = 0
             a3 = 0
             a4 = []
             if b1 == 16:  # перевод в десятичную С.С.
                 for i in a2:
-                    n = int(t16.index(str(i)))
+                    n = int(t16.index(i))
                     a3 += n * (b1 ** ux1)
                     ux1 += 1
             else:
@@ -85,31 +85,40 @@ class P1B1(QWidget):  # Окно с переводчиком С.С.
                     a3 += int(i) * (b1 ** ux1)
                     ux1 += 1
             if c2 == 'Двоичная':  # Перевод кода СС по условию
-                while a3 >= 2:
-                    a4.append(str(a3 % 2))
-                    a3 -= a3 % 2
-                    a3 /= 2
-                    a3 = int(a3)
-                    if a3 < 2:
-                        a4.append('1')
+                if a3 >= 2:
+                    while a3 >= 2:
+                        a4.append(str(a3 % 2))
+                        a3 -= a3 % 2
+                        a3 /= 2
+                        a3 = int(a3)
+                        if a3 < 2:
+                            a4.append('1')
+                else:
+                    a4.append(str(a3))
                 self.kin1.setText(str(''.join(a4[::-1])))
             if c2 == 'Восьмиричная':
-                while a3 >= b2:
-                    a4.append(str(a3 % b2))
-                    a3 -= a3 % b2
-                    a3 //= 8
-                    if a3 < 8:
-                        a4.append(str(a3))
+                if a3 >= 8:
+                    while a3 >= b2:
+                        a4.append(str(a3 % b2))
+                        a3 -= a3 % b2
+                        a3 //= 8
+                        if a3 < 8:
+                            a4.append(str(a3))
+                else:
+                    a4.append(str(a3))
                 self.kin1.setText(str(''.join(a4[::-1])))
             if c2 == 'Десятиричная':
                 self.kin1.setText(str(a3))
             if c2 == 'Шестнадцатиричная':
-                while a3 >= b2:
-                    a4.append(str(t16[a3 % b2]))
-                    a3 -= a3 % b2
-                    a3 //= 16
-                    if a3 < 16:
-                        a4.append(str(a3))
+                if a3 >= 16:
+                    while a3 >= b2:
+                        a4.append(str(t16[a3 % b2]))
+                        a3 -= a3 % b2
+                        a3 //= 16
+                        if a3 < 16:
+                            a4.append(str(a3))
+                else:
+                    a4.append(str(t16[a3]))
                 self.kin1.setText(str(''.join(a4[::-1])))
 
 
@@ -216,31 +225,40 @@ class P1B2(QWidget):  # Открывает окно с калькуляторо�
             if Z1 == ':':  # Частное двух кодов С.С.
                 a3 /= az3
             if c2 == 'Двоичная':  # Перевод кода СС по условию
-                while a3 >= 2:
-                    a4.append(str(a3 % 2))
-                    a3 -= a3 % 2
-                    a3 /= 2
-                    a3 = int(a3)
-                    if a3 < 2:
-                        a4.append('1')
+                if a3 >= 2:
+                    while a3 >= 2:
+                        a4.append(str(a3 % 2))
+                        a3 -= a3 % 2
+                        a3 /= 2
+                        a3 = int(a3)
+                        if a3 < 2:
+                            a4.append('1')
+                else:
+                    a4.append(str(a3))
                 self.X2B.setText(str(''.join(a4[::-1])))
             if c2 == 'Восьмиричная':
-                while a3 >= b2:
-                    a4.append(str(a3 % b2))
-                    a3 -= a3 % b2
-                    a3 //= 8
-                    if a3 < 8:
-                        a4.append(str(a3))
+                if a3 >= 8:
+                    while a3 >= b2:
+                        a4.append(str(a3 % b2))
+                        a3 -= a3 % b2
+                        a3 //= 8
+                        if a3 < 8:
+                            a4.append(str(a3))
+                else:
+                    a4.append(str(a3))
                 self.X2B.setText(str(''.join(a4[::-1])))
             if c2 == 'Десятиричная':
                 self.X2B.setText(str(a3))
             if c2 == 'Шестнадцатиричная':
-                while a3 >= b2:
-                    a4.append(str(t16[a3 % b2]))
-                    a3 -= a3 % b2
-                    a3 //= 16
-                    if a3 < 16:
-                        a4.append(str(a3))
+                if a3 >= 16:
+                    while a3 >= b2:
+                        a4.append(str(t16[a3 % b2]))
+                        a3 -= a3 % b2
+                        a3 //= 16
+                        if a3 < 16:
+                            a4.append(str(a3))
+                else:
+                    a4.append(str(t16[a3]))
                 self.X2B.setText(str(''.join(a4[::-1])))
 
 
